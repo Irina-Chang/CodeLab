@@ -30,7 +30,18 @@ public class ProfessorController {
         return mv;
 
     }
-}
+
+    @GetMapping ("/professor/new")
+        public ModelAndView nnew() {
+            ModelAndView mv= new ModelAndView("professores/new");
+            mv.addObject("statusProfessor", StatusProfessor.values());
+
+    return mv;
+    }
+
+    }
+
+
  /*Professor  garnet = new Professor( "Garnet", new BigDecimal(5000), StatusProfessor.ATIVO);
         garnet.setId(1L);
         Professor perola = new Professor("Perola", new BigDecimal(6000), StatusProfessor.APOSENTADO);
