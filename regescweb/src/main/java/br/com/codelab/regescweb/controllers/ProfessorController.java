@@ -1,11 +1,13 @@
 package br.com.codelab.regescweb.controllers;
 
+import br.com.codelab.regescweb.dto.RequisicaoNovoProfessor;
 import br.com.codelab.regescweb.models.Professor;
 import br.com.codelab.regescweb.models.StatusProfessor;
 import br.com.codelab.regescweb.repositories.ProfessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.lang.reflect.Array;
@@ -39,6 +41,12 @@ public class ProfessorController {
     return mv;
     }
 
+   @PostMapping("/professores")
+    public String create(RequisicaoNovoProfessor requisicao) {
+        Professor professor = requisicao.toProfessor();
+        this.professorRepository.save(professor);
+        return "redirect:/professores";
+    }
     }
 
 
