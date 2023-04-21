@@ -4,8 +4,10 @@ import br.com.codelab.regescweb.dto.RequisicaoNovoProfessor;
 import br.com.codelab.regescweb.models.Professor;
 import br.com.codelab.regescweb.models.StatusProfessor;
 import br.com.codelab.regescweb.repositories.ProfessorRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,31 +25,40 @@ public class ProfessorController {
     private ProfessorRepository professorRepository;
 
     @GetMapping("/professores")
-    public ModelAndView index(){
+    public ModelAndView index() {
 
         List<Professor> professores = this.professorRepository.findAll();
-        ModelAndView mv = new ModelAndView( "professores/index");
+        ModelAndView mv = new ModelAndView("professores/index");
         mv.addObject("professores", professores);
 
         return mv;
 
     }
 
-    @GetMapping ("/professor/new")
-        public ModelAndView nnew() {
-            ModelAndView mv= new ModelAndView("professores/new");
-            mv.addObject("statusProfessor", StatusProfessor.values());
+    @GetMapping("/professores/new") //nome do caminho na url
+    public ModelAndView nnew() {
+        ModelAndView mv = new ModelAndView("professores/new"); //caminho da pasta
+        mv.addObject("listaStatusProfessor", StatusProfessor.values());
 
-    return mv;
+        return mv;
     }
 
-   @PostMapping("/professores")
-    public String create(RequisicaoNovoProfessor requisicao) {
-        Professor professor = requisicao.toProfessor();
-        this.professorRepository.save(professor);
-        return "redirect:/professores";
+    @PostMapping("/professores")
+    public ModelAndView create(@Valid RequisicaoNovoProfessor requisicao, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            System.out.println("Preencha todos os campos");
+            ModelAndView mv = new ModelAndView( "professores/new");
+            mv.addObject("listaStatusProfessor", StatusProfessor.values());
+            return mv;
+        } else {
+
+            Professor professor = requisicao.toProfessor();
+            this.professorRepository.save(professor);
+
+            return new ModelAndView ("redirect:/professores");
+        }
     }
-    }
+}
 
 
  /*Professor  garnet = new Professor( "Garnet", new BigDecimal(5000), StatusProfessor.ATIVO);
