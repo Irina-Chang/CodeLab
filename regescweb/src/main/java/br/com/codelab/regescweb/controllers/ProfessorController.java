@@ -36,7 +36,7 @@ public class ProfessorController {
     }
 
     @GetMapping("/professores/new") //nome do caminho na url
-    public ModelAndView nnew() {
+    public ModelAndView nnew(RequisicaoNovoProfessor requisicao) {
         ModelAndView mv = new ModelAndView("professores/new"); //caminho da pasta
         mv.addObject("listaStatusProfessor", StatusProfessor.values());
 
