@@ -4,6 +4,7 @@ import br.com.codelab.regescweb.models.Professor;
 import br.com.codelab.regescweb.models.StatusProfessor;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.lang.NonNull;
 
 import java.math.BigDecimal;
@@ -13,9 +14,9 @@ public class RequisicaoNovoProfessor {
 
     @NonNull
     @NotBlank
-    private String  nome;
-    @NonNull
-    @DecimalMin(value = "0.0", inclusive = false)
+    private String  nome; //em caso de erro NotBlank.requisicaoNovoProfessor.nome
+    @NotNull
+    @DecimalMin("0.0")
     private BigDecimal salario;
     private StatusProfessor statusProfessor;
 
