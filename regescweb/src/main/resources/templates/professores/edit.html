@@ -1,13 +1,12 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{fragmentos :: head ('Novo Professor')}"></head>
+<head th:replace="~{fragmentos :: head('Editar Professor #')}"></head>
 
-  <body>
+<body>
+<header th:replace="~{fragmentos :: header('Editar Professor #' + ${professorId})}"></header>
 
-  <header th:replace="~{fragmentos :: header('Novo Professor')}"></header>
-  <div th:replace="~{professores/fragmentos :: form(requisicaoFormProfessor, '/professores')}">Formulário!</div>
-
+<div th:replace="~{professores/fragmentos :: form(requisicaoFormProfessor, '/professores/' + ${professorId})}">Formulário!</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"

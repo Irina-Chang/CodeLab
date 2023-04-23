@@ -8,10 +8,15 @@
 
 <header th:replace="~{fragmentos :: header('Lista de Professores')}"> </header>
 
-<div class="container">
-    <div class="row">
-        <h1>Lista de Professores</h1>
+<div class="container mb-4">
+    <div class="col-12">
+        <span th:styleappend="${(param.erro == null || param.mensagem == null) ? 'display: none;' : ''}"
+              th:class="${(param.erro != null && param.erro) ? 'error-message' : 'success-message'}"
+              th:text="${param.mensagem != null ? param.mensagem : ''}">Mensagem de confirmacao!</span>
     </div>
+</div>
+
+<div class="container">
 
     <div class="row">
         <div class = "col-12">
@@ -35,8 +40,8 @@
                         <td class="col-2" th:text="${professor.salario}">Salário</td>
                         <td class="col-2" th:text="${professor.statusProfessor.toString()}">Status</td>
                         <td class="col-1"><a th:href="@{/professores/{professorId}(professorId = ${professor.id})}"> Detalhes</a> </td>
-                        <td class="col-1"><a href="#"> Editar </a> </td>
-                        <td class="col-1"><a href="#"> Deletar</a> </td>
+                        <td class="col-1"><a th:href="@{/professores/{professorId}/edit(professorId = ${professor.id})}">Editar</a></td>
+                        <td class="col-1"><a th:href="@{/professores/{professorId}/delete(professorId = ${professor.id})}">Deletar</a></td>
                     </tr>
                 </tbody>
 
