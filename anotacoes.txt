@@ -1,0 +1,35 @@
+ModelAndView mv new ModelAndView("professores/new);
+return mv;
+
+ th:field="*{nome}"
+th:field="*{salario}"
+
+th:errorclass="is-invalid"
+
+
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a aria-current="page" class="nav-link active"  href="/">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/professores">Professores</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Alunos</a>
+  </li>
+</ul>
+
+
+<main>
+<div class="container mt-4">
+<div class="list-group">
+<button type="button" class="list-group-item list-group-item-action"'
+th:onclick="window.location.href=\'/professores\''">Professores</button>
+<button type="button" class="list-group-item list-group-item-action">Alunos</button>
+</div>
+</div>
+</main>
+"${#httpServletRequest.getRequestURI().equals('/')?'active';''}"
+
+${#httpServletRequest.getRequestURI().startsWith('/professores')?'active';''}
