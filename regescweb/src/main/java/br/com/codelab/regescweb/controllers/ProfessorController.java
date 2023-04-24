@@ -36,6 +36,8 @@ public class ProfessorController {
 
     }
 
+
+    //pra adicionar um novo professor
     @GetMapping("/new") //nome do caminho na url
     public ModelAndView nnew(RequisicaoFormProfessor requisicao) {
         ModelAndView mv = new ModelAndView("professores/new"); //caminho da pasta
@@ -44,6 +46,8 @@ public class ProfessorController {
         return mv;
     }
 
+
+    //pra criar o formulario do novo professor
     @PostMapping("")
     public ModelAndView create(@Valid RequisicaoFormProfessor requisicao, BindingResult bindingResult) {
 
