@@ -10,15 +10,10 @@
 <header th:replace="~{fragmentos :: header('Lista de cursos')}"> </header>
 
 
-<header>
-    <h1>Cursos!!</h1>
-</header>
-
-
 <div class="container">
 
     <div class="row">
-        <div class = "col-12">
+        <div class = "col-10">
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -28,21 +23,20 @@
                     <th scope="col">Descrição</th>
                     <th scope="col">Tipo do Curso</th>
                     <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
+
                 </tr>
                 </thead>
 
                 <tbody>
                 <tr th:each="curso:${cursos}">
                     <th class="col-1" scope="row" th:text="${curso.getId()}">numero da ID</th>
-                    <td class="col-4" th:text="${curso.codigoCurso}">Código do Curso</td>
-                    <td class="col-4" th:text="${curso.nome}">Nome do Curso</td>
-                    <td class="col-2" th:text="${professor.salario}">Descrição</td>
+                    <td class="col-1" th:text="${curso.codigoCurso}">Código do Curso</td>
+                    <td class="col-2" th:text="${curso.nome}">Nome do Curso</td>
+                    <td class="col-4" th:text="${professor.salario}">Descrição</td>
                     <td class="col-2" th:text="${curso.tipoCurso.toString()}">Tipo</td>
-                  <!--  <td class="col-1"><a th:href="@{/professores/{professorId}(professorId = ${professor.id})}"> Detalhes</a> </td>
-                    <td class="col-1"><a th:href="@{/professores/{professorId}/edit(professorId = ${professor.id})}">Editar</a></td>
-                    <td class="col-1"><a th:href="@{/professores/{professorId}/delete(professorId = ${professor.id})}">Deletar</a></td> -->
+                   <td class="col-1"><a th:href="@{/cursos/{cursoId}(cursoId = ${cursoId})}"> Detalhes</a> </td>
+                    <td class="col-1"><a th:href="@{/cursos/{cursoId}/edit(cursoId = ${cursoId})}">Editar</a></td>
+                    <td class="col-1"><a th:href="@{/cursos/{cursoId}/delete(cursoId = ${cursoId})}">Deletar</a></td>
                 </tr>
                 </tbody>
 

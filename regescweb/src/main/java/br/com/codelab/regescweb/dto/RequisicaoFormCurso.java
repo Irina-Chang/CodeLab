@@ -83,13 +83,14 @@ public class RequisicaoFormCurso {
         this.tipoCurso = curso.getTipoCurso();
     }
 
-
-    public String toString(){
-        return "RequisicaoFormCurso{"+
-                "codigoCurso='"+ codigoCurso + '\''+
-                ", nome="+nome +
-                ", descricao=" + descricao +
-                 ", tipoCurso=" + tipoCurso +
+    @Override
+    public String toString() {
+        return "RequisicaoFormCurso{" +
+                "codigoCurso='" + codigoCurso + '\'' +
+                ", nome='" + nome + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", tipoCurso=" + tipoCurso +
                 '}';
     }
+
 }

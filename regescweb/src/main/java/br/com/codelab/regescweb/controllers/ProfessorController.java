@@ -64,7 +64,7 @@ public class ProfessorController {
             Professor professor = requisicao.toProfessor();
             this.professorRepository.save(professor);
 
-            return new ModelAndView ("redirect:/professores" + professor.getId());
+            return new ModelAndView ("redirect:/professores/" + professor.getId());
         }
 
     }
