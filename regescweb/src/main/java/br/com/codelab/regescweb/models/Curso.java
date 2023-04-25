@@ -12,13 +12,13 @@ public class Curso {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "codigo_curso", unique = true, length = 10, nullable = false)
+    @Column(nullable = false)
     private String codigoCurso;
 
     @Column(nullable = false)
     private String nome;
 
-    @Column(name = "descricao", length = 250)
+    @Column(nullable = false)
     private String descricao;
 
     @Enumerated(EnumType.STRING)

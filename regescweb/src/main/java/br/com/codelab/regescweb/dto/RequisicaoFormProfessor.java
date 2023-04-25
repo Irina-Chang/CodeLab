@@ -45,7 +45,7 @@ public class RequisicaoFormProfessor {
     }
 
 
-    public Professor toProfessor(){
+    public Professor toProfessor(){ //relacionado com o metodo create, vai criar um novo objeto do tipo professor
 
         Professor professor = new Professor();
         professor.setNome(this.nome);
@@ -54,7 +54,7 @@ public class RequisicaoFormProfessor {
 
         return professor;
     }
-    public Professor toProfessor(Professor professor){
+    public Professor toProfessor(Professor professor){ //relacionaco com o metodo update, vai atualizar um objeto do tipo professor
         professor.setNome(this.nome);
         professor.setSalario(this.salario);
         professor.setStatusProfessor(this.statusProfessor);
